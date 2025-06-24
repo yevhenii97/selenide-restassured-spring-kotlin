@@ -13,29 +13,39 @@ environment {
         }
 
         stage('API Tests') {
-            when {
-                    beforeAgent true
-                    expression {
-                        return input(message: 'Run API tests?', ok: 'Run')
+            steps {
+                script {
+                    def runApi = input(message: 'Run API tests?', ok: 'Run')
+                    if (runApi) {
+                        bat './gradlew :requres-pipeline-test:clean :requres-pipeline-test:test --info'
                     }
                 }
-            steps {
-                bat './gradlew :requres-pipeline-test:clean :requres-pipeline-test:test --info'
             }
         }
 
         stage('UI Tests') {
-            when {
-                    beforeAgent true
-                    expression {
-                        return input(message: 'Run UI tests?', ok: 'Run')
+            steps {
+                script {
+                    def runUI = input(message: 'Run UI tests?', ok: 'Run')
+                    if (runUI) {
+                        bat './gradlew :saucedemo-ui-pipeline-tests:clean :saucedemo-ui-pipeline-tests:test --info'
                     }
                 }
-            steps {
-                bat './gradlew :saucedemo-ui-pipeline-tests:clean :saucedemo-ui-pipeline-tests:test --info'
             }
         }
-    }
+
+//         stage('API Tests') {
+//             steps {
+//                 bat './gradlew :requres-pipeline-test:clean :requres-pipeline-test:test --info'
+//             }
+//         }
+//
+//         stage('UI Tests') {
+//             steps {
+//                 bat './gradlew :saucedemo-ui-pipeline-tests:clean :saucedemo-ui-pipeline-tests:test --info'
+//             }
+//         }
+//     }
 
     post {
         always {
