@@ -32,7 +32,7 @@ pipeline {
             junit '**/build/test-results/test/*.xml'
             allure([
                 results: [
-                    [path: 'requres-pipeline-tests/build/allure-results']
+                    [path: 'requres-pipeline-tests/build/allure-results'],
                     [path: 'saucedemo-ui-pipeline-tests/build/allure-results']
                 ],
                 includeProperties: false
