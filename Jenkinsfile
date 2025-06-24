@@ -31,7 +31,7 @@ environment {
             junit '**/build/test-results/test/*.xml'
             allure results: [[path: 'requres-pipeline-test/build/allure-results'],
                              [path: 'saucedemo-ui-pipeline-tests/build/allure-results']],
-                   includeProperties: false
+                   includeProperties: false,
                    installation: 'allure'
         }
     }
