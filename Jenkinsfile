@@ -1,11 +1,9 @@
 pipeline {
     agent any
 
-    environment {
-//         JAVA_HOME = "${tool 'jdk17'}"
-//         PATH = "${JAVA_HOME}/bin;${env.PATH}"
-           GRADLE_OPTS = "-Dorg.gradle.jvmargs='-Xmx2g -Dfile.encoding=UTF-8'"
-    }
+environment {
+    GRADLE_OPTS = "-Xmx2g -Dfile.encoding=UTF-8"
+}
 
     stages {
         stage('Build') {
