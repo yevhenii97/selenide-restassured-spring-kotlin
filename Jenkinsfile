@@ -14,7 +14,7 @@ pipeline {
 
          stage('API Tests') {
              steps {
-                 bat './gradlew :requres-pipeline-test:clean :requres-pipeline-test:test --info'
+                 bat './gradlew :requres-pipeline-tests:clean :requres-pipeline-test:test --info'
              }
          }
 
@@ -32,8 +32,8 @@ pipeline {
             junit '**/build/test-results/test/*.xml'
             allure([
                 results: [
-                    [path: 'requres-pipeline-test/build/allure-results']
-//                     [path: 'saucedemo-ui-pipeline-tests/build/allure-results']
+                    [path: 'requres-pipeline-tests/build/allure-results']
+                    [path: 'saucedemo-ui-pipeline-tests/build/allure-results']
                 ],
                 includeProperties: false
             ])
