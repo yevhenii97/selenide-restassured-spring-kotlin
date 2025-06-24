@@ -1,0 +1,19 @@
+rest:
+  api:
+    base-url: https://reqres.in
+    list-users: /api/users?page=2
+    create-user: /api/users
+
+spring:
+  aop:
+    auto: false
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    cats-db:
+      jdbcUrl: jdbc:postgresql://localhost:5432/course
+      username: postgres
+      password: qwerty159487
+      driver-class-name: org.postgresql.Driver

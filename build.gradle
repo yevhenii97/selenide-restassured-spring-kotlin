@@ -1,0 +1,74 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '2.1.10'
+    id 'org.springframework.boot' version '2.6.3'
+    id 'io.qameta.allure' version '2.11.2'
+}
+allprojects {
+
+//group = "com.exemp"
+    version = "1.0-SNAPSHOT"
+
+    apply plugin: 'java'
+
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+//        testImplementation(kotlin("test"))
+
+        implementation "org.springframework.boot:spring-boot-starter-test:2.2.4.RELEASE"
+        implementation "org.springframework.boot:spring-boot-starter-web:2.2.4.RELEASE"
+        implementation "org.springframework:spring-context:5.2.3.RELEASE"
+        implementation 'com.github.ulisesbocchio:jasypt-spring-boot:3.0.5'
+
+        implementation 'org.springframework:spring-orm:5.3.20'
+
+
+        implementation "io.cucumber:cucumber-java:7.22.2"
+        implementation "io.cucumber:cucumber-junit:7.22.2"
+        implementation "io.cucumber:cucumber-spring:7.22.2"
+
+//        testImplementation("io.cucumber:cucumber-junit-platform-engine:7.14.0")
+
+        implementation "com.fasterxml.jackson.core:jackson-databind:2.10.2"
+        implementation "org.codehaus.jackson:jackson-core-asl:1.9.13"
+        implementation "com.google.code.gson:gson:2.10.1"
+        implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.15.0")
+
+        compileOnly "org.projectlombok:lombok:1.18.26"
+        annotationProcessor "org.projectlombok:lombok:1.18.26"
+        testCompileOnly "org.projectlombok:lombok:1.18.26"
+        testAnnotationProcessor "org.projectlombok:lombok:1.18.26"
+
+
+        testImplementation("io.qameta.allure:allure-cucumber7-jvm:2.24.0")
+
+
+        testImplementation("io.qameta.allure:allure-junit5:2.24.0")
+
+        testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.0")
+        testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.10.0")
+
+        testImplementation "junit:junit:'4.13.2'"
+
+//        Allure
+        implementation("io.qameta.allure:allure-rest-assured:2.13.9")
+        implementation("io.qameta.allure:allure-selenide:2.24.0")
+        implementation("io.qameta.allure:allure-java-commons:2.24.0")
+        implementation("io.qameta.allure:allure-cucumber7-jvm:2.24.0")
+
+    }
+
+    allure {
+        version.set("2.24.0")
+        autoconfigure = true
+        aspectjweaver = true
+    }
+}
+
+
+

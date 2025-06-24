@@ -1,0 +1,13 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm'
+}
+
+description = 'Saucedemo UI Steps'
+
+dependencies {
+    implementation project(':core')
+
+    implementation("com.codeborne:selenide:7.9.2")
+    implementation("io.github.bonigarcia:webdrivermanager:6.1.0")
+}
+

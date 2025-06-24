@@ -1,0 +1,12 @@
+plugins {
+    id 'org.gradle.toolchains.foojay-resolver-convention' version '0.8.0'
+}
+rootProject.name = "selenide-restassured-spring-kotlin"
+
+include(':core')
+include(':restapi-steps')
+include(':requres-pipeline-tests')
+include(':selenide-steps')
+include(':saucedemo-ui-pipeline-tests')
+include(':db-steps')
+

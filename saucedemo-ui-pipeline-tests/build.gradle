@@ -1,0 +1,19 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm'
+    id 'io.qameta.allure' version '2.11.2'
+}
+
+dependencies {
+    implementation project(':core')
+    implementation project(':selenide-steps')
+}
+
+test {
+    useJUnitPlatform()
+    systemProperty "cucumber.filter.tags", System.getProperty("cucumber.filter.tags")
+    project.logger.info("spring.profiles.active=" + System.getProperty("spring.profiles.active"))
+    project.logger.info("cucumber.filter.tags=" + System.getProperty("cucumber.filter.tags"))
+    outputs.upToDateWhen { false }
+}
+
+description = 'Saucedemo UI Tests'

@@ -1,0 +1,12 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm'
+}
+
+dependencies {
+    implementation 'org.postgresql:postgresql:42.5.4'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.2.4.RELEASE'
+
+    implementation "org.springframework:spring-context:5.2.3.RELEASE"
+
+    implementation("org.aspectj:aspectjweaver:1.9.22")
+}
