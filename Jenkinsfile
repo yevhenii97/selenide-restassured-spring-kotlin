@@ -34,12 +34,11 @@ environment {
                     [path: 'requres-pipeline-test/build/allure-results'],
                     [path: 'saucedemo-ui-pipeline-tests/build/allure-results']
                 ],
-                includeProperties: false,
-                installation: 'allure'
+                includeProperties: false
             ])
         }
     }
-
+}
 
 //     post {
 //         always {
@@ -50,4 +49,3 @@ environment {
 //                    includeProperties: false
 //         }
 //     }
-}
