@@ -13,12 +13,22 @@ environment {
         }
 
         stage('API Tests') {
+            input {
+                        message "Запустить API тесты?"
+                        ok "Запустить"
+                        submitter "admin,developer"
+                    }
             steps {
                 bat './gradlew :requres-pipeline-test:clean :requres-pipeline-test:test --info'
             }
         }
 
         stage('UI Tests') {
+            input {
+                            message "Запустить API тесты?"
+                            ok "Запустить"
+                            submitter "admin,developer"
+                        }
             steps {
                 bat './gradlew :saucedemo-ui-pipeline-tests:clean :saucedemo-ui-pipeline-tests:test --info'
             }
