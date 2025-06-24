@@ -31,7 +31,9 @@ pipeline {
         always {
             archiveArtifacts artifacts: 'build/libs/*.jar', allowEmptyArchive: true
             junit '**/build/test-results/test/*.xml'
-            allure includeProperties: false, jdk: ''
+            allure results: [[path: 'requres-pipeline-test/build/allure-results'],
+                             [path: 'saucedemo-ui-pipeline-tests/build/allure-results']],
+                   includeProperties: false
         }
     }
 }
