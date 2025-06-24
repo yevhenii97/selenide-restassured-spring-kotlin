@@ -14,6 +14,7 @@ test {
     project.logger.info("spring.profiles.active=" + System.getProperty("spring.profiles.active"))
     project.logger.info("cucumber.filter.tags=" + System.getProperty("cucumber.filter.tags"))
     outputs.upToDateWhen { false }
+    finalizedBy 'allureReport'
 }
 
 description = 'Saucedemo UI Tests'
