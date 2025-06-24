@@ -14,8 +14,8 @@ environment {
 
         stage('API Tests') {
             input {
-                        message "Запустить API тесты?"
-                        ok "Запустить"
+                        message "Run API tests?"
+                        ok "run"
                         submitter "admin,developer"
                     }
             steps {
@@ -25,8 +25,8 @@ environment {
 
         stage('UI Tests') {
             input {
-                            message "Запустить API тесты?"
-                            ok "Запустить"
+                            message "Run API tests?"
+                            ok "run"
                             submitter "admin,developer"
                         }
             steps {
