@@ -13,22 +13,24 @@ environment {
         }
 
         stage('API Tests') {
-            input {
-                        message "Run API tests?"
-                        ok "run"
-                        submitter "admin,developer"
+            when {
+                    beforeAgent true
+                    expression {
+                        return input(message: 'Run API tests?', ok: 'Run')
                     }
+                }
             steps {
                 bat './gradlew :requres-pipeline-test:clean :requres-pipeline-test:test --info'
             }
         }
 
         stage('UI Tests') {
-            input {
-                            message "Run API tests?"
-                            ok "run"
-                            submitter "admin,developer"
-                        }
+            when {
+                    beforeAgent true
+                    expression {
+                        return input(message: 'Run UI tests?', ok: 'Run')
+                    }
+                }
             steps {
                 bat './gradlew :saucedemo-ui-pipeline-tests:clean :saucedemo-ui-pipeline-tests:test --info'
             }
