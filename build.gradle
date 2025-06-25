@@ -5,7 +5,6 @@ plugins {
 }
 allprojects {
 
-//group = "com.exemp"
     version = "1.0-SNAPSHOT"
 
     apply plugin: 'java'
@@ -61,6 +60,9 @@ allprojects {
         implementation("io.qameta.allure:allure-java-commons:2.24.0")
         implementation("io.qameta.allure:allure-cucumber7-jvm:2.24.0")
 
+//         Awaitility
+        implementation 'org.awaitility:awaitility:4.2.0'
+        implementation 'org.awaitility:awaitility-proxy:3.1.6'
     }
 
     allure {

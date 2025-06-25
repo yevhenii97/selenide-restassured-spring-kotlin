@@ -5,6 +5,11 @@ rest:
     create-user: /api/users
 
 spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
   aop:
     auto: false
   jpa:
@@ -17,3 +22,7 @@ spring:
       username: postgres
       password: qwerty159487
       driver-class-name: org.postgresql.Driver
+
+test:
+  rabbit:
+    queue: test-queue

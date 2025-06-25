@@ -1,0 +1,10 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm'
+}
+
+dependencies {
+    implementation project(':core')
+    implementation("org.springframework.boot:spring-boot-starter-amqp:2.2.4.RELEASE")
+}
+
+description = 'RabbitMq Steps'
