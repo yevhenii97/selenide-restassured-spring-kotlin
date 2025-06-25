@@ -22,3 +22,8 @@ Feature: Reqres api test
   @REQ_API_03
   Scenario: test db
     Given Get all cats from DB
+
+  @REQ_API_04
+  Scenario: test rabbit
+    Given Send message 'HelloRabbitFromTAF' to queue
+    Then Get 'HelloRabbitFromTAF' message from queue

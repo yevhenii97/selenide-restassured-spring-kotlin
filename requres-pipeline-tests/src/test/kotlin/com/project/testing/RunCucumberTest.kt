@@ -18,6 +18,7 @@ import org.springframework.boot.test.context.SpringBootTest
         "com.project.testing",
         "com.project.restapi.stepdefinitions",
         "com.project.db.stepdefinitions",
+        "com.project.rabbitmq.stepdefinitions",
         "com.projecttesting",
     ],
     tags = "not @Ignore"

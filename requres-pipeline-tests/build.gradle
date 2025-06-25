@@ -5,6 +5,7 @@ plugins {
 
 dependencies {
     implementation project(':restapi-steps')
+    implementation project(':rabbitmq-steps')
     implementation project(':db-steps')
     implementation project(':core')
 }
