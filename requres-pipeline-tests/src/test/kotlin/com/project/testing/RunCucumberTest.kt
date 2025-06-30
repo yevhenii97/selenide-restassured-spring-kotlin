@@ -27,6 +27,3 @@ import org.springframework.boot.test.context.SpringBootTest
 @SpringBootTest(classes = [ReqresPipelineTestConfig::class])
 @EnableConfigurationProperties
 class RunCucumberTest
-// In order to run tests from terminal, use the following command:
-// ./gradlew :requres-pipeline-test:clean :requres-pipeline-test:test --info :requres-pipeline-test:allureReport :requres-pipeline-test:allureServe
-// ./gradlew :requres-pipeline-test:clean :requres-pipeline-test:test --info '-Dcucumber.filter.tags="{TEST_TAG}"' :requres-pipeline-test:allureReport :requres-pipeline-test:allureServe

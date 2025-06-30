@@ -21,6 +21,3 @@ import org.springframework.boot.test.context.SpringBootTest
 @CucumberContextConfiguration
 @SpringBootTest(classes = [SaucedemoPipelineTestConfig::class])
 class RunCucumberTest
-// In order to run tests from terminal, use the following command:
-// ./gradlew :saucedemo-ui-pipeline-tests:clean :saucedemo-ui-pipeline-tests:test --info :saucedemo-ui-pipeline-tests:allureReport :saucedemo-ui-pipeline-tests:allureServe
-// ./gradlew :saucedemo-ui-pipeline-tests:clean :saucedemo-ui-pipeline-tests:test --info '-Dcucumber.filter.tags="{TEST_TAG}"' :saucedemo-ui-pipeline-tests:allureReport :saucedemo-ui-pipeline-tests:allureServe
