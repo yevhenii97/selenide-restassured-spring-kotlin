@@ -72,7 +72,7 @@ def sendTelegramNotification(String message) {
         bat """
         curl -s -X POST https://api.telegram.org/bot8189233926:AAFJ8u0FSOw-vFySDnGTuwvsSxn1BHpupt4/sendMessage ^
             -d chat_id=7659349476 ^
-            -d text="${encodedMessage}"
+            -d text="${message}"
         """
     }
 
