@@ -69,11 +69,25 @@ pipeline {
     }
 }
 
+// def sendTelegramNotification(String message) {
+//         bat """
+//         curl -s -X POST https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage ^
+//             -d chat_id=${env.CHAT_ID} ^
+//             -d text="${message}"
+//         """
+//     }
+
+
 def sendTelegramNotification(String message) {
+    withCredentials([
+        string(credentialsId: 'TELEGRAM_BOT_TOKEN', variable: 'TOKEN'),
+        string(credentialsId: 'CHAT_ID', variable: 'CHAT')
+    ]) {
+        def encodedMessage = java.net.URLEncoder.encode(message, "UTF-8")
         bat """
-        curl -s -X POST https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage ^
-            -d chat_id=${env.CHAT_ID} ^
-            -d text="${message}"
+            curl -s -X POST https://api.telegram.org/bot%TOKEN%/sendMessage ^
+                -d chat_id=%CHAT% ^
+                -d text=${encodedMessage}
         """
     }
-
+}
