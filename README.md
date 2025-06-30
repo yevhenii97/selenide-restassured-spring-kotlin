@@ -1,3 +1,17 @@
+This is a TAF example for API and UI tests
+
+Resources for testing:
+API: https://reqres.in/
+UI: https://www.saucedemo.com/
+
+PRECONDITIONS:
+
+In order to run tests you should have:
+1. local postgres base (see application.yml)
+2. local RabbitMQ 
+3. local Jenkins
+
+
 API TESTS:
 
 In order to run tests from terminal, use the following command:
