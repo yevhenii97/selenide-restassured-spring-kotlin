@@ -65,8 +65,9 @@ pipeline {
             ])
         }
     }
+}
 
-    def sendTelegramNotification(String message) {
+def sendTelegramNotification(String message) {
         def encodedMessage = java.net.URLEncoder.encode(message, "UTF-8")
         bat """
         curl -s -X POST https://api.telegram.org/bot8189233926:AAFJ8u0FSOw-vFySDnGTuwvsSxn1BHpupt4/sendMessage ^
@@ -74,5 +75,4 @@ pipeline {
             -d text="${encodedMessage}"
         """
     }
-}
 
