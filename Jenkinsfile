@@ -14,7 +14,7 @@ pipeline {
 
          stage('API Tests') {
              steps {
-                 bat './gradlew :requres-pipeline-tests:clean :requres-pipeline-test:test --info'
+                 bat './gradlew :requres-pipeline-tests:clean :requres-pipeline-tests:test --info'
              }
          }
 
@@ -37,6 +37,22 @@ pipeline {
                 ],
                 includeProperties: false
             ])
+        }
+
+        success {
+                bat """
+                curl -s -X POST https://api.telegram.org/bot8189233926:AAFJ8u0FSOw-vFySDnGTuwvsSxn1BHpupt4/sendMessage ^
+                    -d chat_id=7659349476 ^
+                    -d text="✅ Tests have been passed"
+                """
+        }
+
+        failure {
+                bat """
+                curl -s -X POST https://api.telegram.org/bot8189233926:AAFJ8u0FSOw-vFySDnGTuwvsSxn1BHpupt4/sendMessage ^
+                    -d chat_id=7659349476 ^
+                    -d text="✅ Tests have not been passed"
+                """
         }
     }
 }
