@@ -7,7 +7,7 @@ UI: https://www.saucedemo.com/
 PRECONDITIONS:
 
 In order to run tests you should have:
-1. local postgres base (see application.yml)
+1. local postgres DB (see application.yml)
 2. local RabbitMQ 
 3. local Jenkins
 
