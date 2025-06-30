@@ -21,12 +21,12 @@ pipeline {
             post {
                 success {
                     script {
-                            sendTelegramNotification("✅ API tests PASSED")
+                            sendTelegramNotification("✔ API tests PASSED")
                     }
                 }
                 failure {
                     script {
-                            sendTelegramNotification("❌ API tests FAILED")
+                            sendTelegramNotification("✖ API tests FAILED")
                     }
                 }
             }
@@ -41,12 +41,12 @@ pipeline {
             post {
                 success {
                     script {
-                            sendTelegramNotification("✅ UI tests PASSED")
+                            sendTelegramNotification("✔ UI tests PASSED")
                     }
                 }
                 failure {
                     script {
-                            sendTelegramNotification("❌ UI tests FAILED")
+                            sendTelegramNotification("✖ UI tests FAILED")
                     }
                 }
             }
@@ -68,11 +68,11 @@ pipeline {
 }
 
 def sendTelegramNotification(String message) {
-    powershell """
-    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-    Invoke-RestMethod -Uri "https://api.telegram.org/bot8189233926:AAFJ8u0FSOw-vFySDnGTuwvsSxn1BHpupt4/sendMessage" `
-        -Method Post `
-        -Body @{ chat_id = '7659349476'; text = '${message}' }
-    """
-}
+//         def encodedMessage = java.net.URLEncoder.encode(message, "UTF-8")
+        bat """
+        curl -s -X POST https://api.telegram.org/bot8189233926:AAFJ8u0FSOw-vFySDnGTuwvsSxn1BHpupt4/sendMessage ^
+            -d chat_id=7659349476 ^
+            -d text="${encodedMessage}"
+        """
+    }
 
