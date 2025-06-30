@@ -21,12 +21,12 @@ pipeline {
             post {
                 success {
                     script {
-                            sendTelegramNotification("API tests have been passed")
+                            sendTelegramNotification("API tests have been PASSED")
                     }
                 }
                 failure {
                     script {
-                            sendTelegramNotification("API tests have NOT been passed")
+                            sendTelegramNotification("API tests have been FAILED")
                     }
                 }
             }
@@ -41,12 +41,12 @@ pipeline {
             post {
                 success {
                     script {
-                            sendTelegramNotification("UI tests have been passed")
+                            sendTelegramNotification("UI tests have been PASSED")
                     }
                 }
                 failure {
                     script {
-                            sendTelegramNotification("UI tests have NOT been passed")
+                            sendTelegramNotification("UI tests have been FAILED")
                     }
                 }
             }
