@@ -68,10 +68,11 @@ pipeline {
 }
 
 def sendTelegramNotification(String message) {
-    bat """
-    curl -s -X POST "https://api.telegram.org/bot8189233926:AAFJ8u0FSOw-vFySDnGTuwvsSxn1BHpupt4/sendMessage" ^
-        -d chat_id=7659349476 ^
-        -d text="${message}"
+    powershell """
+    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+    Invoke-RestMethod -Uri "https://api.telegram.org/bot8189233926:AAFJ8u0FSOw-vFySDnGTuwvsSxn1BHpupt4/sendMessage" `
+        -Method Post `
+        -Body @{ chat_id = '7659349476'; text = '${message}' }
     """
 }
 
