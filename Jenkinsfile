@@ -3,6 +3,10 @@ pipeline {
 
     environment {
         GRADLE_OPTS = "-Xmx2g -Dfile.encoding=UTF-8"
+        API_TESTS_STATUS = 'SUCCESS'
+        UI_TESTS_STATUS = 'SUCCESS'
+        TELEGRAM_TOKEN = "8189233926:AAFJ8u0FSOw-vFySDnGTuwvsSxn1BHpupt4"
+        TELEGRAM_CHAT_ID = "7659349476"
     }
 
     stages {
@@ -18,6 +22,13 @@ pipeline {
                     bat './gradlew :requres-pipeline-tests:clean :requres-pipeline-tests:test --info'
                  }
              }
+             post {
+                 failure {
+                     script {
+                         env.API_TESTS_STATUS = 'FAILURE'
+                     }
+                 }
+             }
          }
 
          stage('UI Tests') {
@@ -25,6 +36,13 @@ pipeline {
                  catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
                     bat './gradlew :saucedemo-ui-pipeline-tests:clean :saucedemo-ui-pipeline-tests:test --info'
                  }
+              }
+              post {
+                  failure {
+                      script {
+                          env.UI_TESTS_STATUS = 'FAILURE'
+                      }
+                  }
               }
          }
 
@@ -43,21 +61,46 @@ pipeline {
             ])
         }
 
-        success {
-                bat """
-                curl -s -X POST https://api.telegram.org/bot8189233926:AAFJ8u0FSOw-vFySDnGTuwvsSxn1BHpupt4/sendMessage ^
-                    -d chat_id=7659349476 ^
-                    -d text="✅ Tests have been passed"
-                """
-        }
 
-        failure {
-                bat """
-                curl -s -X POST https://api.telegram.org/bot8189233926:AAFJ8u0FSOw-vFySDnGTuwvsSxn1BHpupt4/sendMessage ^
-                    -d chat_id=7659349476 ^
-                    -d text="✅ Tests have not been passed"
-                """
-        }
+                success {
+                    script {
+                        if (env.API_TESTS_STATUS == 'SUCCESS') {
+                            bat """
+                                curl -s -X POST https://api.telegram.org/bot${env.TELEGRAM_TOKEN}/sendMessage ^
+                                     -d chat_id=${env.TELEGRAM_CHAT_ID} ^
+                                     -d text="API tests passed successfully"
+                            """
+                        }
+
+                        if (env.UI_TESTS_STATUS == 'SUCCESS') {
+                            bat """
+                                curl -s -X POST https://api.telegram.org/bot${env.TELEGRAM_TOKEN}/sendMessage ^
+                                     -d chat_id=${env.TELEGRAM_CHAT_ID} ^
+                                     -d text="UI tests passed successfully"
+                            """
+                        }
+                    }
+                }
+
+                failure {
+                    script {
+                        if (env.API_TESTS_STATUS == 'FAILURE') {
+                            bat """
+                                curl -s -X POST https://api.telegram.org/bot${env.TELEGRAM_TOKEN}/sendMessage ^
+                                     -d chat_id=${env.TELEGRAM_CHAT_ID} ^
+                                     -d text="API tests failed"
+                            """
+                        }
+
+                        if (env.UI_TESTS_STATUS == 'FAILURE') {
+                            bat """
+                                curl -s -X POST https://api.telegram.org/bot${env.TELEGRAM_TOKEN}/sendMessage ^
+                                     -d chat_id=${env.TELEGRAM_CHAT_ID} ^
+                                     -d text="UI tests failed"
+                            """
+                        }
+                    }
+                }
     }
 }
 
