@@ -3,8 +3,6 @@ pipeline {
 
     environment {
         GRADLE_OPTS = "-Xmx2g -Dfile.encoding=UTF-8"
-        TELEGRAM_BOT_TOKEN = credentials('TELEGRAM_BOT_TOKEN')
-        CHAT_ID = credentials('CHAT_ID')
     }
 
     stages {
@@ -69,25 +67,11 @@ pipeline {
     }
 }
 
-// def sendTelegramNotification(String message) {
-//         bat """
-//         curl -s -X POST https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage ^
-//             -d chat_id=${env.CHAT_ID} ^
-//             -d text="${message}"
-//         """
-//     }
-
-
 def sendTelegramNotification(String message) {
-    withCredentials([
-        string(credentialsId: 'TELEGRAM_BOT_TOKEN', variable: 'TOKEN'),
-        string(credentialsId: 'CHAT_ID', variable: 'CHAT')
-    ]) {
-        def encodedMessage = java.net.URLEncoder.encode(message, "UTF-8")
         bat """
-            curl -s -X POST https://api.telegram.org/bot%TOKEN%/sendMessage ^
-                -d chat_id=%CHAT% ^
-                -d text=${encodedMessage}
+        curl -s -X POST https://api.telegram.org/bot8189233926:AAFJ8u0FSOw-vFySDnGTuwvsSxn1BHpupt4/sendMessage ^
+            -d chat_id=7659349476 ^
+            -d text="${message}"
         """
     }
-}
+
