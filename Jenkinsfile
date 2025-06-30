@@ -14,13 +14,17 @@ pipeline {
 
          stage('API Tests') {
              steps {
-                 bat './gradlew :requres-pipeline-tests:clean :requres-pipeline-tests:test --info'
+                 catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                    bat './gradlew :requres-pipeline-tests:clean :requres-pipeline-tests:test --info'
+                 }
              }
          }
 
          stage('UI Tests') {
               steps {
-                  bat './gradlew :saucedemo-ui-pipeline-tests:clean :saucedemo-ui-pipeline-tests:test --info'
+                 catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                    bat './gradlew :saucedemo-ui-pipeline-tests:clean :saucedemo-ui-pipeline-tests:test --info'
+                 }
               }
          }
 
