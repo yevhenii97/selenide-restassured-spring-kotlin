@@ -21,12 +21,12 @@ pipeline {
             post {
                 success {
                     script {
-                            sendTelegramNotification("✔ API tests PASSED")
+                            sendTelegramNotification("API tests have been passed")
                     }
                 }
                 failure {
                     script {
-                            sendTelegramNotification("✖ API tests FAILED")
+                            sendTelegramNotification("API tests have NOT been passed")
                     }
                 }
             }
@@ -41,12 +41,12 @@ pipeline {
             post {
                 success {
                     script {
-                            sendTelegramNotification("✔ UI tests PASSED")
+                            sendTelegramNotification("UI tests have been passed")
                     }
                 }
                 failure {
                     script {
-                            sendTelegramNotification("✖ UI tests FAILED")
+                            sendTelegramNotification("UI tests have NOT been passed")
                     }
                 }
             }
@@ -68,7 +68,6 @@ pipeline {
 }
 
 def sendTelegramNotification(String message) {
-//         def encodedMessage = java.net.URLEncoder.encode(message, "UTF-8")
         bat """
         curl -s -X POST https://api.telegram.org/bot8189233926:AAFJ8u0FSOw-vFySDnGTuwvsSxn1BHpupt4/sendMessage ^
             -d chat_id=7659349476 ^
