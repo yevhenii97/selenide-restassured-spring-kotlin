@@ -15,16 +15,16 @@ In order to run tests you should have:
 API TESTS:
 
 In order to run tests from terminal, use the following command:
- ./gradlew :requres-pipeline-test:clean :requres-pipeline-test:test --info
+ ./gradlew :requres-pipeline-tests:clean :requres-pipeline-tests:test --info
 
 In order to run tests from terminal with Allure, use the following command:
-./gradlew :requres-pipeline-test:clean :requres-pipeline-test:test --info :requres-pipeline-test:allureReport :requres-pipeline-test:allureServe
+./gradlew :requres-pipeline-tests:clean :requres-pipeline-tests:test --info :requres-pipeline-tests:allureReport :requres-pipeline-tests:allureServe
 
 In order to run tests from terminal with tags, use the following command:
- ./gradlew :requres-pipeline-test:clean :requres-pipeline-test:test --info '-Dcucumber.filter.tags="{TEST_TAG}"'  
+ ./gradlew :requres-pipeline-tests:clean :requres-pipeline-tests:test --info '-Dcucumber.filter.tags="{TEST_TAG}"'  
 
 In order to run tests from terminal with tags and with Allure, use the following command:
-./gradlew :requres-pipeline-test:clean :requres-pipeline-test:test --info '-Dcucumber.filter.tags="{TEST_TAG}"' :requres-pipeline-test:allureReport :requres-pipeline-test:allureServe
+./gradlew :requres-pipeline-tests:clean :requres-pipeline-tests:test --info '-Dcucumber.filter.tags="{TEST_TAG}"' :requres-pipeline-tests:allureReport :requres-pipeline-tests:allureServe
 
 
 UI TESTS:
