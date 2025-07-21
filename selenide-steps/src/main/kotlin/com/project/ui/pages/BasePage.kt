@@ -1,4 +1,4 @@
-package com.project.ui.configuration
+package com.project.ui.pages
 
 import com.codeborne.selenide.Configuration
 import com.codeborne.selenide.Selenide

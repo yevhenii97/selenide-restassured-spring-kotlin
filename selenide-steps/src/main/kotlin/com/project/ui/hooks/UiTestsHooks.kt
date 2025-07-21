@@ -1,6 +1,6 @@
 package com.project.ui.hooks
 
-import com.project.ui.configuration.BasePage
+import com.project.ui.pages.BasePage
 import io.cucumber.java.After
 import io.cucumber.java.Before
 import org.slf4j.Logger

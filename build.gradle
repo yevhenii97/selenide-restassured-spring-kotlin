@@ -17,7 +17,6 @@ allprojects {
     }
 
     dependencies {
-//        testImplementation(kotlin("test"))
 
         implementation "org.springframework.boot:spring-boot-starter-test:2.2.4.RELEASE"
         implementation "org.springframework.boot:spring-boot-starter-web:2.2.4.RELEASE"
@@ -31,7 +30,6 @@ allprojects {
         implementation "io.cucumber:cucumber-junit:7.22.2"
         implementation "io.cucumber:cucumber-spring:7.22.2"
 
-//        testImplementation("io.cucumber:cucumber-junit-platform-engine:7.14.0")
 
         implementation "com.fasterxml.jackson.core:jackson-databind:2.10.2"
         implementation "org.codehaus.jackson:jackson-core-asl:1.9.13"

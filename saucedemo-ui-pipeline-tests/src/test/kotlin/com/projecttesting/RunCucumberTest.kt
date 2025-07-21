@@ -13,7 +13,9 @@ import org.springframework.boot.test.context.SpringBootTest
     glue = [
         "com.project.testing",
         "com.project.ui.stepdefinitions",
+        "com.project.playwright.stepdefinitions",
         "com.project.ui.hooks",
+        "com.project.playwright.hooks",
         "com.projecttesting"
     ],
     tags = "not @Ignore"

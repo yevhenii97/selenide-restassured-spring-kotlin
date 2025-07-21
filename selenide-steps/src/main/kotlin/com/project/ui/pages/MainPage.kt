@@ -3,7 +3,6 @@ package com.project.ui.pages
 import com.codeborne.selenide.Condition
 import com.codeborne.selenide.Selenide
 import com.codeborne.selenide.SelenideElement
-import com.project.ui.configuration.BasePage
 import org.springframework.stereotype.Service
 import java.time.Duration
 

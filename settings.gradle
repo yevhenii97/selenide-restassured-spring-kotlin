@@ -10,4 +10,5 @@ include(':selenide-steps')
 include(':saucedemo-ui-pipeline-tests')
 include(':db-steps')
 include(':rabbitmq-steps')
+include(':playwright-steps')
 
