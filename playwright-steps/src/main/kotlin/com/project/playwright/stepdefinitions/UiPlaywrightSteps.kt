@@ -9,13 +9,13 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
 
-class UiPlaywrightSteps (
+class UiPlaywrightSteps(
     private val scenarioContext: ScenarioContext,
     private val logInPage: LogInPagePlaywright,
     private val mainPage: MainPagePlaywright,
 ) {
 
-    companion object{
+    companion object {
         private val log: Logger = LoggerFactory.getLogger(UiPlaywrightSteps::class.java)
     }
 
@@ -28,16 +28,18 @@ class UiPlaywrightSteps (
 
     @Given("Saucedemo user log in (Playwright)")
     fun getInitialData() {
-        logInPage.openUrl(baseUrl)
-        logInPage.putUserName(userName)
-        logInPage.putPassword(password)
-        logInPage.clickLogInButton()
+        logInPage
+            .openUrl(baseUrl)
+            .putUserName(userName)
+            .putPassword(password)
+            .clickLogInButton()
     }
 
     @When("Check additional menu (Playwright)")
     fun check() {
-        mainPage.waitUntilProductTitleIsVisible()
-        mainPage.clickOnHamburgerButton()
-        mainPage.checkThatMenuWrapIsVisible()
+        mainPage
+            .waitUntilProductTitleIsVisible()
+            .clickOnHamburgerButton()
+            .checkThatMenuWrapIsVisible()
     }
 }

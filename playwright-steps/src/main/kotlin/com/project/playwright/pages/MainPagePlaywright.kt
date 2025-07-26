@@ -15,17 +15,20 @@ class MainPagePlaywright(
     private val hamburgerButton by lazy { basePage.page.locator("//*[@id='react-burger-menu-btn']") }
     private val menuWrap by lazy { basePage.page.locator("//*[@class='bm-menu-wrap']") }
 
-    fun waitUntilProductTitleIsVisible(){
+    fun waitUntilProductTitleIsVisible() : MainPagePlaywright{
         productTitle.isVisible
+        return this
     }
 
-    fun clickOnHamburgerButton(){
+    fun clickOnHamburgerButton() : MainPagePlaywright{
         hamburgerButton.waitFor(Locator.WaitForOptions().setState(WaitForSelectorState.VISIBLE).setTimeout(3000.0))
         hamburgerButton.click()
+        return this
     }
 
-    fun checkThatMenuWrapIsVisible(){
+    fun checkThatMenuWrapIsVisible() : MainPagePlaywright{
         val attribute = menuWrap.getAttribute("aria-hidden")
         Assertions.assertThat(attribute).isEqualTo("false")
+        return this
     }
 }

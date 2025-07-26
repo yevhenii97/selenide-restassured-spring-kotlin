@@ -11,19 +11,23 @@ open class LogInPagePlaywright(
     private val userNameField by lazy { basePage.page.locator("//*[@id='user-name']")}
     private val passwordField by lazy { basePage.page.locator("//*[@id='password']")}
 
-    fun putUserName(userName: String){
+    fun putUserName(userName: String) : LogInPagePlaywright{
         userNameField.fill(userName)
+        return this
     }
 
-    fun putPassword(password: String){
+    fun putPassword(password: String) : LogInPagePlaywright{
         passwordField.fill(password)
+        return this
     }
 
-    fun clickLogInButton(){
+    fun clickLogInButton() : LogInPagePlaywright{
         logInButton.click()
+        return this
     }
 
-    fun openUrl(url:String){
+    fun openUrl(url:String) : LogInPagePlaywright{
         basePage.page.navigate(url)
+        return this
     }
 }
