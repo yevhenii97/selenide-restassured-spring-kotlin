@@ -1,0 +1,9 @@
+test:
+  browser:
+    headless: false
+    type: chrome
+  user:
+    userName: standard_user
+    password: secret_sauce
+  rest:
+    baseUrl: https://www.saucedemo.com/
