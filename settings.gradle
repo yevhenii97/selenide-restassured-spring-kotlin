@@ -11,4 +11,5 @@ include(':saucedemo-ui-pipeline-tests')
 include(':db-steps')
 include(':rabbitmq-steps')
 include(':playwright-steps')
+include(':ui-unit-pipeline-tests')
 
